@@ -1,0 +1,146 @@
+@startuml
+title Diagrama de Clases - Sistema de Gestión de Publicaciones
+
+' ================================
+' Editor de Texto Interactivo
+' ================================
+package "Editor de Texto Interactivo" {
+
+  class EditorTexto {
+    ' Modelos (atributos)
+    - contenido: String
+    - autor: String
+    --
+    ' Métodos
+    + crearTexto(): void
+    + editarTexto(): void
+    + guardarTexto(ruta: String): boolean
+    + cargarTexto(ruta: String): String
+  }
+
+  class ListadoDocumentos {
+    ' Modelos
+    - documentos: List<String>
+    --
+    ' Métodos
+    + listarDocumentos(): List<String>
+    + seleccionarDocumento(id: int): String
+  }
+}
+
+' =============================================
+' Comparador y Contador de Contenido
+' =============================================
+package "Comparador y Contador de Contenido" {
+
+  class ComparadorContenido {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + compararArchivos(file1: String, file2: String): boolean
+    + encontrarDiferencias(file1: String, file2: String): String
+  }
+
+  class AnalizadorTexto {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + contarPalabras(texto: String): int
+    + generarEstadisticas(texto: String): String
+  }
+}
+
+' =============================================
+' Búsqueda de Palabras y Gestión de Contactos
+' =============================================
+package "Búsqueda y Gestión de Contactos" {
+
+  class BuscadorPalabras {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + buscarPalabra(texto: String, palabra: String): int
+  }
+
+  class AgendaContactos {
+    ' Modelos
+    - contactos: Map<String, String>
+    --
+    ' Métodos
+    + agregarContacto(nombre: String, info: String): void
+    + eliminarContacto(nombre: String): void
+    + listarContactos(): Map<String, String>
+    + buscarContacto(nombre: String): String
+  }
+}
+
+' =============================================
+' Interfaz Gráfica Avanzada
+' =============================================
+package "Interfaz Gráfica Avanzada" {
+
+  class VentanaMultiple {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + abrirNuevaVentana(): void
+    + cerrarVentana(id: int): void
+  }
+
+  class SeguimientoRaton {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + obtenerPosicionRaton(): String
+  }
+
+  class BarraDesplazamiento {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + actualizarProgreso(posicion: int): void
+    + saltarSeccion(seccion: int): void
+  }
+}
+
+' =============================================
+' Validación de E-mail y Diseño Gráfico
+' =============================================
+package "Validación y Diseño" {
+
+  class ValidadorEmail {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + validarEmail(email: String): boolean
+  }
+
+  class HerramientaDibujo {
+    ' (Sin atributos particulares)
+    --
+    ' Métodos
+    + iniciarDibujo(): void
+    + guardarDibujo(): void
+    + borrarDibujo(): void
+  }
+}
+
+' =============================================
+' Nota de Entregables y Evaluación
+' =============================================
+note as NotaEvaluacion
+Entregables:
+- Aplicación de Gestión de Publicaciones
+- Documento de Diseño y Especificaciones
+
+Evaluación:
+• Funcionalidad y Correctitud
+• Calidad de la Interfaz de Usuario
+• Eficiencia del Código
+• Innovación y Utilidad
+• Documentación y Presentación
+end note
+
+NotaEvaluacion .. "Sistema de Gestión de Publicaciones"
+
+@enduml
